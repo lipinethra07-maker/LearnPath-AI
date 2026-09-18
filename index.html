@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnPath AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            🎓 <span>LearnPath AI</span>
+        </div>
+
+        <button class="nav-btn active" onclick="showPage('dashboard')">
+            🏠 Dashboard
+        </button>
+
+        <button class="nav-btn" onclick="showPage('material')">
+            📚 Study Material
+        </button>
+
+        <button class="nav-btn" onclick="showPage('learning')">
+            🧠 Learning Path
+        </button>
+
+        <button class="nav-btn" onclick="showPage('quiz')">
+            📝 Quick MCQ
+        </button>
+
+        <button class="nav-btn" onclick="showPage('chat')">
+            💬 AI Chat
+        </button>
+
+        <button class="nav-btn" onclick="showPage('progress')">
+            📊 Progress
+        </button>
+
+        <button class="nav-btn" onclick="showPage('schedule')">
+            📅 Schedule
+        </button>
+
+        <div class="sidebar-bottom">
+            <label>🌐 Language</label>
+
+            <select id="language">
+                <option>English</option>
+                <option>Tamil</option>
+                <option>Hindi</option>
+                <option>Telugu</option>
+                <option>Malayalam</option>
+            </select>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- DASHBOARD -->
+        <section id="dashboard" class="page">
+
+            <div class="top">
+                <div>
+                    <p class="small">WELCOME BACK 👋</p>
+                    <h1>Your Learning Dashboard</h1>
+                    <p>Learn smarter with your personal AI study companion.</p>
+                </div>
+            </div>
+
+
+            <div class="stats">
+
+                <div class="stat-card">
+                    <span>📚</span>
+                    <h3>5</h3>
+                    <p>Subjects</p>
+                </div>
+
+                <div class="stat-card">
+                    <span>📈</span>
+                    <h3>68%</h3>
+                    <p>Overall Progress</p>
+                </div>
+
+                <div class="stat-card">
+                    <span>🔥</span>
+                    <h3>5 Days</h3>
+                    <p>Study Streak</p>
+                </div>
+
+                <div class="stat-card">
+                    <span>⏱️</span>
+                    <h3>2.5h</h3>
+                    <p>Today's Study</p>
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-grid">
+
+                <div class="card">
+
+                    <h2>📊 Subject Progress</h2>
+
+                    <div class="progress-item">
+                        <div>
+                            <span>Artificial Intelligence</span>
+                            <b>80%</b>
+                        </div>
+                        <progress value="80" max="100"></progress>
+                    </div>
+
+                    <div class="progress-item">
+                        <div>
+                            <span>Data Structures</span>
+                            <b>55%</b>
+                        </div>
+                        <progress value="55" max="100"></progress>
+                    </div>
+
+                    <div class="progress-item">
+                        <div>
+                            <span>Database Management</span>
+                            <b>35%</b>
+                        </div>
+                        <progress value="35" max="100"></progress>
+                    </div>
+
+                </div>
+
+
+                <div class="card recommendation">
+
+                    <h2>💡 Today's Focus</h2>
+
+                    <div class="focus">
+                        <strong>Database Management</strong>
+                        <span>Needs more revision</span>
+                    </div>
+
+                    <p>
+                        Your AI study planner recommends giving
+                        extra time to this subject.
+                    </p>
+
+                    <button onclick="showPage('schedule')">
+                        View Schedule →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="success-message">
+                🎉 Great work! Your progress has improved.
+                Keep going — you're doing amazing!
+            </div>
+
+        </section>
+
+
+        <!-- STUDY MATERIAL -->
+        <section id="material" class="page hidden">
+
+            <p class="small">LEARN FROM YOUR CONTENT</p>
+            <h1>📚 Study Material</h1>
+
+            <div class="card upload-card">
+
+                <h2>Upload your study material</h2>
+
+                <p>
+                    Add PDF, PPT, notes, links or study content.
+                    LearnPath AI will understand it and create
+                    personalized resources.
+                </p>
+
+                <label class="upload-box">
+
+                    <span>📤</span>
+
+                    <strong>Choose a file</strong>
+
+                    <small>PDF, PPT, PPTX, TXT</small>
+
+                    <input type="file" id="studyFile"
+                        accept=".pdf,.ppt,.pptx,.txt">
+
+                </label>
+
+
+                <div class="or">OR</div>
+
+
+                <textarea id="content"
+                    placeholder="Paste your notes or study content here..."></textarea>
+
+
+                <input type="text" id="studyLink"
+                    placeholder="Paste a YouTube / website / study link (optional)">
+
+
+                <button class="generate-btn" onclick="analyzeContent()">
+                    ✨ Analyze My Material
+                </button>
+
+            </div>
+
+
+            <div id="analysis" class="result-area hidden">
+
+                <div class="card">
+
+                    <span class="tag">AI ANALYSIS</span>
+
+                    <h2>🧠 Topic Recognized</h2>
+
+                    <h3>Machine Learning</h3>
+
+                    <h2>📖 Quick Brief</h2>
+
+                    <p>
+                        Machine Learning is a branch of Artificial
+                        Intelligence that allows computers to learn
+                        patterns from data and make predictions.
+                    </p>
+
+
+                    <div class="hint-box">
+                        💡 <strong>Last-Minute Hint:</strong>
+                        Remember: Data → Training → Model → Prediction
+                    </div>
+
+                </div>
+
+
+                <!-- RESOURCES -->
+                <div class="card">
+
+                    <h2>📺 Related YouTube Videos</h2>
+
+                    <div class="resource">
+                        <span>▶️</span>
+                        <div>
+                            <strong>Machine Learning Basics</strong>
+                            <p>Beginner-friendly explanation</p>
+                        </div>
+                        <button>Watch</button>
+                    </div>
+
+                    <div class="resource">
+                        <span>▶️</span>
+                        <div>
+                            <strong>Supervised & Unsupervised Learning</strong>
+                            <p>Understand the main learning types</p>
+                        </div>
+                        <button>Watch</button>
+                    </div>
+
+                </div>
+
+
+                <!-- SOURCES -->
+                <div class="card">
+
+                    <h2>🔗 Related Learning Sources</h2>
+
+                    <div class="resource">
+                        <span>🌐</span>
+                        <div>
+                            <strong>Machine Learning Tutorial</strong>
+                            <p>Additional learning material</p>
+                        </div>
+                        <button>Open</button>
+                    </div>
+
+                    <div class="resource">
+                        <span>📘</span>
+                        <div>
+                            <strong>ML Reference Guide</strong>
+                            <p>Useful concepts and examples</p>
+                        </div>
+                        <button>Open</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- LEARNING PATH -->
+        <section id="learning" class="page hidden">
+
+            <p class="small">PERSONALIZED BY AI</p>
+            <h1>🧠 My Learning Path</h1>
+
+            <div class="card">
+
+                <div class="path-header">
+                    <div>
+                        <h2>Machine Learning</h2>
+                        <p>Beginner → Intermediate</p>
+                    </div>
+
+                    <span class="percentage">42%</span>
+                </div>
+
+
+                <div class="roadmap">
+
+                    <div class="week completed">
+                        <span>✓</span>
+                        <div>
+                            <strong>Week 1 — Python Basics</strong>
+                            <p>Variables, loops and functions</p>
+                        </div>
+                    </div>
+
+                    <div class="week completed">
+                        <span>✓</span>
+                        <div>
+                            <strong>Week 2 — Data Handling</strong>
+                            <p>NumPy and Pandas</p>
+                        </div>
+                    </div>
+
+                    <div class="week current">
+                        <span>3</span>
+                        <div>
+                            <strong>Week 3 — ML Fundamentals</strong>
+                            <p>Supervised and unsupervised learning</p>
+                        </div>
+                    </div>
+
+                    <div class="week">
+                        <span>4</span>
+                        <div>
+                            <strong>Week 4 — Mini Project</strong>
+                            <p>Build your first ML project</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- QUIZ -->
+        <section id="quiz" class="page hidden">
+
+            <p class="small">CHECK YOUR KNOWLEDGE</p>
+            <h1>📝 Quick MCQ Test</h1>
+
+            <div class="card quiz-card">
+
+                <span class="tag">QUESTION 1 / 5</span>
+
+                <h2>What is Machine Learning?</h2>
+
+                <button class="option" onclick="selectAnswer(this)">
+                    A. A method that allows computers to learn from data
+                </button>
+
+                <button class="option" onclick="selectAnswer(this)">
+                    B. A type of computer hardware
+                </button>
+
+                <button class="option" onclick="selectAnswer(this)">
+                    C. An operating system
+                </button>
+
+                <button class="option" onclick="selectAnswer(this)">
+                    D. A database
+                </button>
+
+                <button class="generate-btn" onclick="nextQuestion()">
+                    Next Question →
+                </button>
+
+                <div id="quizResult"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CHAT -->
+        <section id="chat" class="page hidden">
+
+            <p class="small">YOUR AI STUDY COMPANION</p>
+            <h1>💬 LearnPath AI Chat</h1>
+
+            <div class="card chat-card">
+
+                <div id="chatBox">
+
+                    <div class="ai-message">
+                        🤖 Hi! I remember your uploaded study
+                        material. Ask me anything about it!
+                    </div>
+
+                </div>
+
+
+                <div class="chat-input">
+
+                    <input type="text"
+                        id="chatInput"
+                        placeholder="Ask about your study material...">
+
+                    <button onclick="sendMessage()">
+                        Send
+                    </button>
+
+                </div>
+
+
+                <div class="hint-box">
+                    💡 Try: "Explain this in simple words"
+                    or "Give me a quick revision hint"
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROGRESS -->
+        <section id="progress" class="page hidden">
+
+            <p class="small">YOUR PERFORMANCE</p>
+            <h1>📊 Semester Progress</h1>
+
+            <div class="card">
+
+                <div class="semester">
+                    <h2>Semester 3</h2>
+                    <span>Overall: 68%</span>
+                </div>
+
+
+                <div class="subject-progress">
+                    <div>
+                        <span>Artificial Intelligence</span>
+                        <b>80%</b>
+                    </div>
+                    <progress value="80" max="100"></progress>
+                </div>
+
+                <div class="subject-progress">
+                    <div>
+                        <span>Data Structures</span>
+                        <b>55%</b>
+                    </div>
+                    <progress value="55" max="100"></progress>
+                </div>
+
+                <div class="subject-progress">
+                    <div>
+                        <span>Database Management</span>
+                        <b>35%</b>
+                    </div>
+                    <progress value="35" max="100"></progress>
+                </div>
+
+                <div class="subject-progress">
+                    <div>
+                        <span>Computer Networks</span>
+                        <b>65%</b>
+                    </div>
+                    <progress value="65" max="100"></progress>
+                </div>
+
+
+                <div class="success-message">
+                    🌟 You improved in Artificial Intelligence!
+                    Keep up the good work.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SCHEDULE -->
+        <section id="schedule" class="page hidden">
+
+            <p class="small">PERSONALIZED STUDY PLAN</p>
+            <h1>📅 Smart Schedule</h1>
+
+            <div class="card">
+
+                <h2>Today's Timetable</h2>
+
+                <div class="schedule-item">
+                    <span>5:00 PM</span>
+                    <div>
+                        <strong>Database Management</strong>
+                        <p>Weak topic revision · 60 min</p>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <span>6:00 PM</span>
+                    <div>
+                        <strong>Data Structures</strong>
+                        <p>Practice MCQs · 45 min</p>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <span>6:45 PM</span>
+                    <div>
+                        <strong>Artificial Intelligence</strong>
+                        <p>New topic · 45 min</p>
+                    </div>
+                </div>
+
+
+                <div class="hint-box">
+                    🧠 AI gives more study time to subjects
+                    where your progress is lower.
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
